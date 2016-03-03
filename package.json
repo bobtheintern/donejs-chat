@@ -1,0 +1,83 @@
+{
+  "name": "donejs-chat",
+  "version": "0.0.0",
+  "description": "",
+  "homepage": "",
+  "author": {
+    "name": "",
+    "email": "",
+    "url": ""
+  },
+  "scripts": {
+    "test": "testee src/test.html --browsers firefox --reporter Spec",
+    "start": "can-serve --port 8080",
+    "develop": "can-serve --develop --port 8080",
+    "document": "documentjs",
+    "build": "node build"
+  },
+  "main": "donejs-chat/index.stache!done-autorender",
+  "files": [
+    "src"
+  ],
+  "keywords": [],
+  "system": {
+    "main": "donejs-chat/index.stache!done-autorender",
+    "directories": {
+      "lib": "src"
+    },
+  "envs": {
+    "server-production": {
+      "baseURL": "https://bobtheintern.firebaseapp.com/"
+    }
+  },    
+    "configDependencies": [
+      "live-reload"
+    ],
+    "npmAlgorithm": "flat"
+  },
+  "dependencies": {
+    "bit-tabs": "^0.2.0",
+    "bootstrap": "^3.3.6",
+    "can": "^2.3.16",
+    "can-connect": "^0.3.4",
+    "can-ssr": "^0.11.6",
+    "done-autorender": "^0.6.3",
+    "done-component": "^0.4.0",
+    "done-css": "~1.1.16",
+    "generator-donejs": "^0.7.0",
+    "jquery": "~2.2.1",
+    "steal": "^0.14.0",
+    "steal-socket.io": "^1.0.1"
+  },
+  "devDependencies": {
+    "can-fixture": "^0.1.2",
+    "documentjs": "^0.4.2",
+    "donejs-cli": "^0.7.0",
+    "donejs-deploy": "^0.4.0",
+    "funcunit": "~3.0.0",
+    "steal-qunit": "^0.1.1",
+    "steal-tools": "^0.14.0",
+    "testee": "^0.2.4"
+  },
+    "donejs": {
+      "deploy": {
+        "root": "dist",
+        "services": {
+          "production": {
+            "type": "firebase",
+            "config": {
+              "firebase": "bobtheintern",
+              "public": "./dist",
+              "headers": [{
+                "source": "/**",
+                "headers": [{
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }]
+              }]
+            }
+          }
+        }
+      }
+    }  
+}
